@@ -34,7 +34,7 @@ func main () {
 }
 
 // switch does not need break statements
-
+// switch w/o condition -> if-then-else chains
 func switchexample(number int) string {
 
 	switch number % 2 == 0 {
@@ -54,7 +54,13 @@ func forloop(number int) {
 	}
 
 	i := 0
-	for ; ; {	
+
+	for i < number {	
+		fmt.Println("hello")
+		i++
+	}
+
+	for {	
 		fmt.Println("hello")
 		if i == number + 3 {break}
 		i++
@@ -72,4 +78,35 @@ func someFunc() {
 	defer fmt.Println("hello!!")
 	// some statements
 }
+
+func funcWithDefer() {
+	defer fmt.Println("world")
+	fmt.Println("hello")
+	//o/p
+	// hello world
+}
+func anotherDefer() {
+	fmt.Println("counting")
+
+	for i := 0; i < 5; i++ {
+		defer fmt.Println(i) //added to stack LIFO
+	}
+
+	fmt.Println("done")
+	// o/p
+	// counting done 4 3 2 1
+}
+
+func ifcond() {
+	if num := len("hello"); num == 5 { // num - scope only if and else
+		fmt.Println("can declare variables and can use it like this in if condition")
+	} else {
+		fmt.Println(num) //can access variables declared in if
+	}
+	// cant use 'num' here (outside if-else blocks)
+}
+
+
+
+
 

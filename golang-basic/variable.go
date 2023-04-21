@@ -15,9 +15,24 @@ func main2() {
 	// or
 	var_name2 := 3
 
-	const count = 3
+	// or (type comes last)
+	// var var_name, var_name1, var_name2 int
+
+	// or
+	// var var_name, var_name1, var_name2 = 8, 10, 3
+
+	// or
+	// var_name, var_name1, var_name2 := 8, 10, 3
+
+	const count = 3 // character, string, boolean, or numeric values.
+	// cannot use := for const
 
 	fmt.Print(var_name, var_name1, var_name2)
+
+	// zero values - 0, false, ""
+
+	// type change type(value)
+	// hello = string(2424)
 
 	// strings - immutable - have to reassign
 }
