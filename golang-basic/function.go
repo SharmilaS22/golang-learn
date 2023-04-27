@@ -28,9 +28,60 @@ func addAndMul2(x, y int) (sum, prod int) { //the sum and prod are declared - ju
 	// affects readability in long functions
 }
 
+// passing functions as values
+func operations (oper func (int, int) int, x, y int) int {
+	return oper(x, y)
+}
+
+// functions with closures
+func adder () func (int) int {
+	// returns a func (which takes an int and returns an int)
+	sum := 0 // the below func is "bound" to sum variable
+	return func (a int) int {
+		sum += a
+		return sum
+	}
+
+}
+
+func fibonacci() func() int {
+	a := 0
+	b := 1
+	return func () int {
+		temp := a
+		a = b
+		b = temp + b
+		return temp
+	}
+}
+
 func main () {
 	sum, prod := addAndMul2(3, 2)
 	fmt.Println(sum, prod)
+
+
+	// passing functions as values
+	addFunc := func (a, b int) int {
+		return a + b
+	}
+	mulFunc := func(a, b int) int {
+		return a * b
+	}
+	fmt.Println(operations(addFunc, 4, 5))
+	fmt.Println(operations(mulFunc, 4, 5))
+
+// functions with closures
+// A closure is a function value that references variables from outside its body.
+	val := adder()
+	fmt.Println(val(2)) //2
+	fmt.Println(val(3)) //5
+
+	// another example for closure
+	f := fibonacci() //returns func
+	for i := 0; i < 5; i++ {
+		fmt.Println(f())
+	}
+
 }
 
 // switch does not need break statements
