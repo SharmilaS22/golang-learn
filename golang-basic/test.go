@@ -28,3 +28,6 @@ func main1() {
 	// This returns Pi value
 	fmt.Println("Hello, ", math.Pi)
 }
+
+// to download packages from go.mod
+// go mod download
